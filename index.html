@@ -238,13 +238,16 @@
             }
         });
         
-        // *** 2. AJAX SUBMISSION LOGIC ***
+        // *** 2. AJAX SUBMISSION LOGIC (Keeps user on the page) ***
         
-        // NOTE: If you deploy a NEW version of your script, update this URL!
+        // CRITICAL: Use the correct Google Apps Script URL here!
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxyyTCZtfmegJMgu8TOuTu-ViEZO_q-NbF-2Qev2CUKD7Z6jMT6OzDenq62UY3BVRWfqg/exec';
 
         rsvpForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Stop the default form submission (which caused the redirect)
+            e.preventDefault(); // Stop the browser from navigating away
+
+            // Capture the RSVP status before submission
+            const rsvpStatus = attendingSelect.value; 
 
             // Show loader and disable button
             loader.style.display = 'block';
@@ -257,14 +260,30 @@
             fetch(SCRIPT_URL, {
                 method: 'POST',
                 body: formData,
-                mode: 'no-cors' // Required for Google Apps Script submission
+                mode: 'no-cors' // Necessary for cross-origin submission to Apps Script
             })
             .then(response => {
-                // Since mode is 'no-cors', we can't check response.ok, 
-                // but if the fetch completes without network error, we assume success 
-                // (Google Apps Script will handle saving the data).
-                console.log('Submission successful (response status unknown due to no-cors)');
-                
+                // Assuming submission worked because no-cors prevents checking status
+                console.log('Submission successful.');
+
+                // --- CUSTOM MESSAGE LOGIC ---
+                const confirmationTitle = confirmationSection.querySelector('h3');
+                const confirmationParagraph = confirmationSection.querySelector('p');
+
+                if (rsvpStatus === 'Yes') {
+                    // Message for YES RSVP
+                    confirmationTitle.innerHTML = '🎉 **Woohoo! See You There!**';
+                    confirmationParagraph.innerHTML = 'We are absolutely thrilled you can make it! Your response has been recorded, and we can\'t wait to celebrate with you on **13th December 2025.**';
+                } else if (rsvpStatus === 'No') {
+                    // Message for NO RSVP
+                    confirmationTitle.innerHTML = '💔 **Aww, That\'s a Bummer!**';
+                    confirmationParagraph.innerHTML = 'We\'re truly sad you won\'t be able to celebrate with us. We appreciate you letting us know, and we\'ll be thinking of you!';
+                } else {
+                     // Fallback message
+                    confirmationTitle.innerHTML = '✅ RSVP Submitted!';
+                    confirmationParagraph.innerHTML = 'Thank you for your response. It has been recorded.';
+                }
+
                 // Hide the form and show the success message
                 rsvpSection.style.display = 'none';
                 confirmationSection.style.display = 'block';
@@ -272,11 +291,9 @@
 
             })
             .catch(error => {
-                // This catches network errors, not script errors.
+                // Restore button state on network failure
                 console.error('Submission failed:', error);
                 alert('Submission failed. Please check your network connection and try again.');
-                
-                // Restore button state
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit RSVP';
             })
