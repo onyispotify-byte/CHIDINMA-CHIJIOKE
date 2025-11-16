@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Wedding Reception of Chidimma & Chijioke</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    <title>Chidimma & Chijioke Wedding RSVP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* --- Color Variables (Plum, Gold, Ivory) --- */
         :root {
@@ -16,7 +16,7 @@
             --font-body: 'Cormorant Garamond', serif;
         }
 
-        /* --- Global Styles & Catchy Background --- */
+        /* --- Global Styles & Minimalist Background --- */
         body {
             font-family: var(--font-body);
             color: var(--color-text);
@@ -26,128 +26,133 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            /* Classy Background Texture */
-            background-color: var(--color-ivory);
-            background-image: repeating-linear-gradient(
-                45deg,
-                rgba(255, 255, 255, 0.05),
-                rgba(255, 255, 255, 0.05) 1px,
-                transparent 1px,
-                transparent 10px
-            );
+            background-color: var(--color-ivory); /* Simple Ivory background */
         }
 
         .container {
             width: 90%;
-            max-width: 700px;
+            max-width: 650px; /* Slightly narrower for focus */
             background-color: white;
-            padding: 50px 40px;
-            margin: 30px;
-            /* Enhanced Classy Shadows and Border */
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-            border: 5px solid var(--color-gold);
-            border-radius: 8px;
+            padding: 60px 50px; /* Increased white space/padding */
+            margin: 40px;
+            /* Minimalist Design: Light shadow */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); 
+            border-radius: 4px;
             text-align: center;
         }
 
+        /* --- Typography: Thin, Elegant, and Minimal --- */
         h1, h2, h3 {
             font-family: var(--font-heading);
             color: var(--color-plum);
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            font-weight: 400; /* Lighter weight for elegance */
         }
 
-        h1 { font-size: 2.8em; margin-bottom: 5px; }
-        h2 { font-size: 2.0em; margin-bottom: 40px; color: var(--color-gold); }
-        h3 { border-bottom: 2px solid var(--color-gold); padding-bottom: 5px; margin-top: 40px; }
+        h1 { font-size: 2.5em; margin-bottom: 5px; text-transform: none; }
+        h2 { font-size: 1.8em; margin-top: 5px; margin-bottom: 40px; color: var(--color-gold); font-weight: 700; }
+        h3 { 
+            border-bottom: 1px solid var(--color-gold); /* Thin gold line */
+            padding-bottom: 8px; 
+            margin-top: 40px;
+            font-size: 1.4em;
+            text-transform: uppercase;
+        }
 
         .details p {
-            font-size: 1.2em;
-            line-height: 1.8;
+            font-size: 1.1em;
+            line-height: 1.7;
+            font-weight: 300; /* Lighter body text */
+        }
+
+        /* --- NEW CLASS: Styling for Bold, Stylized Details (Date, Time, Venue) --- */
+        .detail-highlight {
+            font-family: var(--font-heading); /* Use the stylish heading font */
+            font-weight: 700; /* Make it bold */
+            color: var(--color-plum); /* Highlight in plum */
+            display: block;
+            margin-top: 5px;
+            font-size: 1.15em;
         }
         
-        /* --- Form & Button Styles --- */
-        .form-group { margin-bottom: 20px; text-align: left; }
-        label { display: block; margin-bottom: 5px; font-weight: 600; color: var(--color-plum); }
+        /* --- Form Styles: Clean and Focused --- */
+        .form-group { margin-bottom: 25px; text-align: left; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--color-plum); }
         input[type="text"], select { 
             width: 100%; 
             padding: 12px; 
-            border: 2px solid var(--color-plum);
-            border-radius: 4px; 
+            border: 1px solid #ddd;
+            border-radius: 2px; 
             box-sizing: border-box; 
             font-family: var(--font-body); 
             font-size: 1em;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
         input[type="text"]:focus, select:focus {
              border-color: var(--color-gold); 
+             box-shadow: 0 0 0 1px var(--color-gold); 
              outline: none;
         }
 
         .submit-btn {
             background-color: var(--color-plum);
-            color: var(--color-ivory);
-            padding: 15px 30px;
-            border: 2px solid var(--color-plum);
-            border-radius: 4px;
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 2px;
             cursor: pointer;
-            font-size: 1.2em;
-            font-weight: 700;
+            font-size: 1.1em;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-            margin-top: 25px;
+            transition: background-color 0.3s;
+            margin-top: 30px;
         }
-        .submit-btn:hover { 
-            background-color: var(--color-gold); 
-            color: var(--color-plum);
-            border-color: var(--color-plum);
-        }
+        .submit-btn:hover { background-color: #794D7D; }
 
         /* --- Confirmation Area --- */
         #confirmation { 
             display: none; 
             margin-top: 50px; 
-            padding: 30px; 
-            border: 2px solid var(--color-gold); 
+            padding: 40px 30px; 
+            border: 1px solid #ddd;
             background-color: var(--color-ivory); 
-            border-radius: 8px;
+            border-radius: 4px;
         }
+        #confirmation p { font-weight: 400; }
         #card-link {
             display: inline-block;
-            margin-top: 20px;
-            padding: 15px 30px;
+            margin-top: 25px;
+            padding: 12px 25px;
             background-color: var(--color-gold);
             color: var(--color-plum);
-            font-size: 1.1em;
-            font-weight: 700;
+            font-size: 1em;
+            font-weight: 600;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 2px;
             transition: opacity 0.3s;
         }
-        #card-link:hover { opacity: 0.9; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
+        #card-link:hover { opacity: 0.9; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>The Wedding Reception</h1>
-        <h2>Chidimma Obidiegwu & Chijioke Amaechi</h2>
+        <h1>Wedding Reception</h1>
+        <h2>CHIDIMMA OBIDIEGWU & CHIJOIKE AMAECHI</h2>
 
         <div class="details">
             <h3>Date & Location</h3>
             <p>
-                **Date:** Saturday, 13th December 2025<br>
-                **Time:** 2:00 PM<br>
-                **Venue:** Villa Park Hotels and Suites<br>
-                **Address:** Festac Access Road, Lagos.
+                <span class="detail-highlight">Date: 13th December 2025</span>
+                <span class="detail-highlight">Time: 2:00 PM</span>
+                <span class="detail-highlight">Venue: Villa Park Hotels and Suites, Festac Access Road, Lagos.</span>
             </p>
         </div>
 
         <div id="rsvp-section">
             <h3>Kindly Respond</h3>
-            <p>Please confirm your attendance below. We look forward to celebrating with you!</p>
+            <p style="margin-bottom: 30px; font-style: italic;">Please confirm your attendance below.</p>
             
-            <form id="rsvp-form" action="https://script.google.com/macros/s/AKfycbwR9UcR_Hy4as97PfMLV9oOcg_8jdJzdJNwhv0NfPvmu46lNJeoOUnewQxftyUOAKmJ-A/exec" method="POST">
+            <form id="rsvp-form" action="https://script.google.com/macros/s/AKfycbxZctYR75O8wC27PRQaCHupqd6MkWv6HBaHkD9YWlhftrcSC59NAEq7IfIMGovBaAWmzw/exec" method="POST">
                 
                 <input type="hidden" name="redirect" value="https://onyispotify-byte.github.io/CHIDINMA-CHIJIOKE/#confirmation">
                 
@@ -178,9 +183,10 @@
         </div>
 
         <div id="confirmation">
-            <h3>RSVP Submitted Successfully!</h3>
+            <h3>RSVP Submitted!</h3>
             <p>Thank you for confirming your attendance! Your response has been recorded.</p>
-            <p>Please download your digital wedding card below:</p>
+            <p>Download your digital wedding card below:</p>
+            
             <a id="card-link" href="https://drive.google.com/file/d/1cY7qFbItLa0Qw6zZ1705p6ICHxKVR_O7/view?usp=drive_link" target="_blank">
                 🎉 Download Your Digital Card 🎉
             </a>
@@ -191,7 +197,6 @@
         const attendingSelect = document.getElementById('attending');
         const plusOneGroup = document.getElementById('plus-one-group'); 
 
-        // Toggle 'Plus 1?' field visibility
         attendingSelect.addEventListener('change', function() {
             if (this.value === 'Yes') {
                 plusOneGroup.style.display = 'block';
@@ -202,7 +207,6 @@
             }
         });
         
-        // Control visibility of confirmation vs. form based on URL hash (after script redirect)
         if (!window.location.hash || window.location.hash !== '#confirmation') {
             document.getElementById('confirmation').style.display = 'none';
         } else {
