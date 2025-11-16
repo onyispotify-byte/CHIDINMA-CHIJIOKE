@@ -16,7 +16,7 @@
             --font-body: 'EB Garamond', serif; 
         }
 
-        /* --- Global Styles & Floral Background (Minimalist) --- */
+        /* --- Global Styles & Full-Screen Background Image --- */
         body {
             font-family: var(--font-body);
             color: var(--color-text);
@@ -28,16 +28,18 @@
             min-height: 100vh;
             background-color: var(--color-ivory); 
             
-            /* --- SUBTLE FLORAL BACKGROUND PATTERN using file path --- */
-            background-image: url('floral-bg.png'); /* Ensure floral-bg.png is uploaded to your repo */
-            background-repeat: repeat;
-            background-size: 70px 70px;
+            /* --- CRITICAL FIX: SINGLE, FULL-SCREEN BACKGROUND IMAGE using your name --- */
+            background-image: url('floral-bg.png'); 
+            background-size: cover; /* Ensures the image covers the whole screen */
+            background-position: center center; 
+            background-repeat: no-repeat; /* Stops the image from tiling/repeating */
+            background-attachment: fixed; 
         }
 
         .container {
             width: 90%;
             max-width: 650px; 
-            background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white to see texture */
+            background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white box */
             padding: 60px 50px; 
             margin: 40px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); 
