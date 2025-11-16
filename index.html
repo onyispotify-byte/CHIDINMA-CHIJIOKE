@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding Reception of Chidimma & Chijioke</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Plum, Gold, Ivory Palette */
+        :root {
+            --color-plum: #5D375F; 
+            --color-gold: #C9A95F; 
+            --color-ivory: #FDF5E6; 
+            --color-text: #333333;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Cormorant Garamond', serif;
+        }
+        body { font-family: var(--font-body); background-color: var(--color-ivory); /* ... other styles ... */ }
+        .container { /* ... container styles ... */ }
+        h1, h2, h3 { font-family: var(--font-heading); color: var(--color-plum); /* ... other styles ... */ }
+        .form-group { /* ... form styles ... */ }
+        .submit-btn { background-color: var(--color-plum); color: var(--color-ivory); /* ... other styles ... */ }
+        #confirmation { display: none; /* ... other styles ... */ }
+        #card-link { background-color: var(--color-gold); color: var(--color-plum); /* ... other styles ... */ }
+        /* (The rest of the CSS is assumed from previous steps) */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Wedding Reception</h1>
+        <h2>Chidimma Obidiegwu & Chijioke Amaechi</h2>
+
+        <div class="details">
+            <h3>Date & Location</h3>
+            <p>
+                **Date:** Saturday, 13th December 2025<br>
+                **Time:** 2:00 PM<br>
+                **Venue:** Villa Park Hotels and Suites<br>
+                **Address:** Festac Access Road, Lagos.
+            </p>
+            <p style="border-top: 1px solid #eee; padding-top: 15px;">
+                Kindly submit your attendance details below.
+            </p>
+        </div>
+
+        <div id="rsvp-section">
+            <h3>Kindly Respond</h3>
+            
+            <form id="rsvp-form" action="[PASTE YOUR SHEETMONKEY ENDPOINT URL HERE]" method="POST">
+                
+                <input type="hidden" name="redirect" value="#confirmation">
+                
+                <div class="form-group">
+                    <label for="name">Your Full Name(s)</label>
+                    <input type="text" id="name" name="Name" required placeholder="e.g., Mr. and Mrs. Smith">
+                </div>
+
+                <div class="form-group">
+                    <label for="attending">Will You Be Attending?</label>
+                    <select id="attending" name="RSVP status" required>
+                        <option value="">-- Select an option --</option>
+                        <option value="Yes">Yes, With Pleasure!</option>
+                        <option value="No">Regretfully, Cannot Attend</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="plus-one-group" style="display:none;">
+                    <label for="plus_one">Are You Bringing a Plus One?</label>
+                    <select id="plus_one" name="Plus 1?">
+                        <option value="No">No</option>
+                        <option value="Yes">Yes</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit RSVP</button>
+            </form>
+        </div>
+
+        <div id="confirmation">
+            <h3>RSVP Submitted Successfully!</h3>
+            <p>Thank you for confirming your attendance! Your response has been recorded.</p>
+            <p>Please download your digital wedding card below:</p>
+            <a id="card-link" href="[PASTE YOUR DIGITAL CARD LINK HERE]" target="_blank">
+                🎉 Download Your Digital Card 🎉
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const attendingSelect = document.getElementById('attending');
+        const plusOneGroup = document.getElementById('plus-one-group'); 
+
+        // Toggle 'Plus One' visibility and set default values
+        attendingSelect.addEventListener('change', function() {
+            if (this.value === 'Yes') {
+                plusOneGroup.style.display = 'block';
+                document.getElementById('plus_one').value = 'No'; // Default to No, guest must select Yes
+            } else {
+                plusOneGroup.style.display = 'none';
+                document.getElementById('plus_one').value = 'No'; // Ensure "No" is recorded if not attending
+            }
+        });
+        
+        // Control visibility of confirmation vs. form based on URL hash
+        if (!window.location.hash || window.location.hash !== '#confirmation') {
+            document.getElementById('confirmation').style.display = 'none';
+        } else {
+             document.getElementById('rsvp-section').style.display = 'none';
+             document.getElementById('confirmation').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
