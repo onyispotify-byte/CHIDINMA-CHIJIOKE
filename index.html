@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chidimma & Chijioke Wedding RSVP</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&family=EB+Garamond:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* --- Color Variables (Plum, Gold, Ivory) --- */
         :root {
@@ -13,7 +13,8 @@
             --color-gold: #C9A95F;         
             --color-ivory: #FDF5E6;        
             --color-text: #333333;
-            --font-heading: 'Tangerine', cursive; 
+            /* CHANGE 1: Swapped 'Tangerine' for 'Cinzel Decorative' */
+            --font-heading: 'Cinzel Decorative', serif; 
             --font-body: 'Cormorant Garamond', serif; 
         }
 
@@ -29,7 +30,7 @@
             min-height: 100vh;
             background-color: var(--color-ivory); 
             
-            /* UPDATED: Changed file name to background.png */
+            /* Background image file name */
             background-image: url('background.png'); 
             background-size: cover; 
             background-position: center center; 
@@ -50,29 +51,32 @@
 
         /* --- Typography --- */
         h1, h2 {
+            /* CHANGE 2: Applies Cinzel Decorative */
             font-family: var(--font-heading); 
             letter-spacing: 2px;
-            text-transform: uppercase;
+            /* Keep uppercase definition in h1/h2 styles below */
         }
 
         h1 { 
-            font-size: 4.5em; 
+            /* CHANGE 3: Adjusted size for Cinzel Decorative */
+            font-size: 3.2em; 
             margin-bottom: 5px; 
             font-weight: 400; 
-            text-transform: none;
+            /* Added uppercase for Roman look */
+            text-transform: uppercase; 
             line-height: 1.1; 
             color: #000000; 
         }
         
         h2 { 
-            font-size: 3em; 
+            /* CHANGE 4: Adjusted size and color for Cinzel Decorative */
+            font-size: 2.2em; 
             margin-top: 5px; 
             margin-bottom: 40px; 
-            /* Names are plum and bold for visibility */
-            color: var(--color-plum); 
-            font-weight: 700; 
+            color: var(--color-gold); /* Reverted to gold for emphasis */
+            font-weight: 700; /* Use a bold weight */
             letter-spacing: 1px;
-            text-transform: none; 
+            text-transform: uppercase; /* Added uppercase for Roman look */
         }
         
         h3 { 
@@ -216,12 +220,12 @@
 
             /* Adjust header sizes for mobile legibility */
             h1 { 
-                font-size: 3.5em; /* Reduced from 4.5em */
+                font-size: 2.8em; /* Adjusted size for mobile */
                 letter-spacing: 0;
             }
             
             h2 { 
-                font-size: 2.2em; /* Reduced from 3em */
+                font-size: 1.8em; /* Adjusted size for mobile */
                 margin-bottom: 30px; 
             }
             
